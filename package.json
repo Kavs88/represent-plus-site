@@ -1,0 +1,8 @@
+{
+  "name": "representplus-final",
+  "version": "1.0.0",
+  "description": "Represent Plus Agency Site",
+  "dependencies": {
+    "airtable": "^0.12.2"
+  }
+}

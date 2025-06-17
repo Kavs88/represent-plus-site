@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Represent Plus | A Curated Creative Agency</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#047857', secondary: '#a3e636' } } }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+  
+  <header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm transition-colors duration-300">
+      <div class="container mx-auto px-6 flex justify-between items-center h-20">
+        <a href="#" class="text-2xl font-bold"><span class="gradient-text">Represent+</span></a>
+        <div class="flex items-center space-x-4">
+          <nav class="hidden md:flex space-x-8 items-center">
+            <a href="#artists" class="nav-link font-semibold text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-secondary">Talent</a>
+            <a href="#testimonials" class="nav-link font-semibold text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-secondary">Testimonials</a>
+            <a href="#contact" class="btn-gradient text-white px-5 py-2 rounded-lg font-semibold shadow-lg hover:shadow-primary/40">Book Talent</a>
+          </nav>
+          <button id="themeToggle" aria-label="Toggle Dark Mode" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+            <i class="ri-sun-line text-slate-800 dark:text-slate-200" id="theme-icon-light"></i>
+            <i class="ri-moon-line text-slate-800 dark:text-slate-200 hidden" id="theme-icon-dark"></i>
+          </button>
+        </div>
+      </div>
+  </header>
+
+  <main>
+    <section id="hero" class="min-h-screen flex items-center justify-center text-center bg-slate-50 dark:bg-slate-900 pt-20">
+        <div class="p-8" data-aos="fade-up">
+          <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">Exceptional Talent. <span class="gradient-text">Curated!</span></h1>            <p class="mt-6 text-lg md:text-xl max-w-2xl mx-auto text-gray-600 dark:text-gray-300">A boutique agency representing a new generation of artists, musicians, and visionary creatives who define culture.</p>
+        </div>
+    </section>
+
+    <section id="artists" class="py-24 bg-white dark:bg-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+              <h2 class="text-4xl md:text-5xl font-bold">Meet The <span class="gradient-text">Talent</span></h2>
+              <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">A handpicked roster of creatives pushing boundaries and defining what's next. Explore their work.</p>
+            </div>
+            <div id="artist-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-16">
+                <p class="col-span-full text-center text-gray-500 font-semibold">Loading our roster...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-24 bg-slate-50 dark:bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+              <h2 class="text-4xl md:text-5xl font-bold">What Our <span class="gradient-text">Partners</span> Say</h2>
+              <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Hear from brands and collaborators who have experienced the impact of working with our talent.</p>
+            </div>
+            <div id="testimonial-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact" class="py-24 bg-slate-800 dark:bg-black text-center text-white">
+        <div class="container mx-auto px-6" data-aos="fade-up">
+          <h2 class="text-4xl md:text-5xl font-bold">Let's Create Together</h2>
+          <p class="mt-6 text-lg max-w-xl mx-auto text-gray-300">Ready to find the perfect talent for your project? Or are you a creative looking for representation? Get in touch.</p>
+          <a href="mailto:you@representplus.com" class="mt-10 inline-block btn-gradient text-white px-8 py-3 rounded-lg text-lg font-semibold shadow-lg hover:shadow-secondary/40">Contact The Agency</a>
+        </div>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    // --- Initialize AOS (Animate on Scroll) ---
+    AOS.init({
+      duration: 700,
+      once: true,
+      offset: 50
+    });
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      // --- Theme Toggle Logic ---
+      const themeToggle = document.getElementById('themeToggle');
+      const lightIcon = document.getElementById('theme-icon-light');
+      const darkIcon = document.getElementById('theme-icon-dark');
+      
+      const applyTheme = (theme) => {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+          lightIcon.classList.add('hidden');
+          darkIcon.classList.remove('hidden');
+        } else {
+          document.documentElement.classList.remove('dark');
+          lightIcon.classList.remove('hidden');
+          darkIcon.classList.add('hidden');
+        }
+      };
+
+      const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      applyTheme(currentTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme);
+      });
+
+      // --- Airtable Data Fetching Logic ---
+      const artistGrid = document.getElementById('artist-grid');
+      const testimonialGrid = document.getElementById('testimonial-grid');
+      let allArtistsData = []; 
+
+      try {
+        const response = await fetch('/api/get-content');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        
+        allArtistsData = data.artists;
+        displayArtists(data.artists);
+        displayTestimonials(data.testimonials);
+
+      } catch (error) {
+        artistGrid.innerHTML = `<p class="col-span-full text-center text-red-500">Failed to load talent. Please check back later.</p>`;
+        console.error('Fetch error:', error);
+      }
+
+      function displayArtists(artists) {
+        if (!artists || artists.length === 0) {
+            artistGrid.innerHTML = `<p class="col-span-full text-center text-gray-500">Our roster is currently being updated.</p>`;
+            return;
+        }
+        artistGrid.innerHTML = artists.map((artist, index) => `
+          <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl dark:shadow-black/30 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="${index * 100}">
+            <img src="${artist.profileImageUrl}" alt="Portrait of ${artist.name}" class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-full p-6">
+              <h3 class="text-2xl font-bold text-white">${artist.name}</h3>
+              <p class="text-secondary font-semibold text-md">${artist.specialty}</p>
+            </div>
+            <a href="#" class="portfolio-btn artist-card-button absolute top-4 right-4 bg-white/90 text-slate-800 px-4 py-2 rounded-lg font-semibold text-sm opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0" data-artist-index="${index}">
+              View Portfolio
+            </a>
+          </div>
+        `).join('');
+      }
+
+      function displayTestimonials(testimonials) {
+         if (!testimonials || testimonials.length === 0) {
+            testimonialGrid.innerHTML = '';
+            return;
+        }
+        testimonialGrid.innerHTML = testimonials.map((t, index) => `
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="${index * 100}">
+            <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg italic">"${t.quote}"</p>
+            <p class="font-bold text-gray-900 dark:text-white">${t.author}</p>
+            <p class="text-sm text-primary dark:text-secondary font-semibold">${t.titleCompany}</p>
+          </div>
+        `).join('');
+      }
+      
+      document.body.addEventListener('click', (e) => {
+        const portfolioButton = e.target.closest('.portfolio-btn');
+        if (portfolioButton) {
+          e.preventDefault();
+          const artistIndex = portfolioButton.getAttribute('data-artist-index');
+          const artist = allArtistsData[artistIndex];
+          if (!artist) return;
+
+          const portfolioItems = artist.portfolio.map(item => ({
+              'href': item.url,
+              'type': item.type,
+              'description': item.caption,
+              'title': artist.name
+          }));
+
+          GLightbox({ elements: portfolioItems, loop: true, openEffect: 'zoom', closeEffect: 'fade' }).open();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
